@@ -1,19 +1,14 @@
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import BACK_ARROW from "../../assets/svgs/backArrow.svg";
+import BIRTHDAY_ICON from "../../assets/svgs/birthdayIcon.svg";
 import styles from "./styles.module.css";
 const Details = () => {
   const info = useLocation();
   const stateData = useSelector((val) => val.data);
-  const {
-    name,
-    nickname,
-    birthday,
-    img,
-    portrayed,
-    occupation,
-    appearance,
-    char_id,
-  } = info.state.data;
+  const { name, nickname, birthday, img, portrayed, occupation, appearance } =
+    info.state.data;
+  const indexValue = info.state.index;
 
   return (
     <div className={styles.main_container}>
@@ -25,10 +20,11 @@ const Details = () => {
       >
         <Link to={"/"}>
           <img
+            alt="back_icon"
             className={styles.back_icon}
             height={"16px"}
             width={"16px"}
-            src={require("../../assets/ICONS/BACK.png")}
+            src={BACK_ARROW}
           />
         </Link>
         <div className={styles.main_image}>
@@ -37,6 +33,7 @@ const Details = () => {
             height={"210px"}
             width={"159px"}
             src={img}
+            alt="char_img"
           />
           <div>
             <h1 className={styles.char_name}>{name}</h1>
@@ -52,9 +49,10 @@ const Details = () => {
           {birthday !== "Unknown" && (
             <div className={styles.date_container}>
               <img
+                alt="gift_icon"
                 height={"23px"}
                 width={"23px"}
-                src={require("../../assets/ICONS/GIFT.png")}
+                src={BIRTHDAY_ICON}
               />
               <h5 className={styles.date_text}>{birthday}</h5>
             </div>
@@ -76,22 +74,19 @@ const Details = () => {
         </div>
         <label className={styles.char_label_title}>Other characters</label>
         <div className={styles.characters_list}>
-          {stateData.map(
-            (val, i) =>
-              val.char_id !== char_id &&
-              i <= 2 && (
-                <div key={i}>
-                  <img
-                    className={styles.characters_img}
-                    height={"210px"}
-                    width={"158px"}
-                    src={val.img}
-                  />
-                  <h1 className={styles.name}>{val.name}</h1>
-                  <h1>{val.nickname}</h1>
-                </div>
-              )
-          )}
+          {stateData?.slice(indexValue + 1, indexValue + 4).map((val, i) => (
+            <div key={i}>
+              <img
+                className={styles.characters_img}
+                height={"210px"}
+                width={"158px"}
+                src={val.img}
+                alt="poster"
+              />
+              <h1 className={styles.name}>{val.name}</h1>
+              <h1>{val.nickname}</h1>
+            </div>
+          ))}
         </div>
       </div>
     </div>

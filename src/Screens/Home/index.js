@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import styles from "../../App.module.css";
 import Card from "../../Components/CardComponent/Card";
-import { AddFav, GetData, RemoveFav } from "../../Redux/action";
-import { Character } from "../../api/index";
+import { AddFav, RemoveFav } from "../../Redux/action";
+import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
+import HEART from "../../assets/svgs/HEART.svg";
 const Home = () => {
-  const navigate = useNavigate();
   const stateData = useSelector((val) => val.data);
   const dispatch = useDispatch();
 
@@ -18,11 +17,7 @@ const Home = () => {
             key={i}
             to={"/details"}
             name={val.name}
-            favIcon={
-              val.isFav
-                ? require("../../assets/ICONS/HEART_FILLED.png")
-                : require("../../assets/ICONS/HEART.png")
-            }
+            favIcon={val.isFav ? HEART_FILLED : HEART}
             nickname={val.nickname}
             portrayed={val.portrayed}
             img={val.img}
@@ -31,7 +26,7 @@ const Home = () => {
                 ? dispatch(RemoveFav(val.char_id))
                 : dispatch(AddFav(val.char_id))
             }
-            params={{ data: val }}
+            params={{ data: val, index: i }}
           />
         );
       })}

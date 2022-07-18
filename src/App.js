@@ -12,7 +12,9 @@ function App() {
         <NavBar />
       ) : location.pathname === "/favourites" ? (
         <NavBar defaultNav={false} />
-      ) : null}
+      ) : (
+        <NavBar showNavBar={false} />
+      )}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favourites" element={<Favourites />} />
