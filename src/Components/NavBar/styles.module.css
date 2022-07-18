@@ -1,0 +1,52 @@
+.nav_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 39px;
+  padding: 0px 51px 0px 51px;
+}
+.app_title {
+  color: white;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24.13px;
+  margin-left: 21.14px;
+}
+.logo_container {
+  display: flex;
+  align-items: center;
+}
+.menu_container {
+  display: flex;
+  justify-content: flex-end;
+}
+.input_container {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 15px;
+  border-radius: 5px;
+  margin-right: 47px;
+}
+.input_field {
+  display: flex;
+  border: 0px !important;
+  box-shadow: 0 0px 0 0 !important;
+  color: white;
+  background-color: #242424;
+  margin-right: 10px;
+}
+.input_field:focus {
+  outline: none;
+}
+.fav_icon {
+  margin-top: 4px;
+}
+.fav_text {
+  font-weight: 600;
+  size: 24px;
+  line-height: 28.13px;
+  color: #18ca75;
+}

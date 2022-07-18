@@ -1,0 +1,123 @@
+h1 {
+  color: white;
+  margin: 0px;
+  padding: 0px;
+}
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28.13px;
+  color: #18ca75;
+  margin: 0px;
+  padding: 0px;
+}
+h5 {
+  font-size: 20px;
+  color: red;
+  font-weight: 300;
+  line-height: 23.44px;
+}
+.char_name {
+  font-weight: 700;
+  font-size: 58.29px;
+  line-height: 68.3px;
+}
+.char_nickname {
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 37.5px;
+}
+.name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18.75px;
+}
+.main_container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 51px;
+}
+.background_image_container {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(3, 3, 3, 0.5),
+      rgba(7, 0, 0, 1)
+    ),
+    var(--img);
+  background-size: cover;
+  background-position: top;
+  width: 50%;
+  display: flex;
+  height: 100vh;
+}
+.main_image {
+  text-align: center;
+  align-self: center;
+  width: 75%;
+}
+.date_container {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.details {
+  padding: 0px 20px 0px 51px;
+  width: 50%;
+  margin-top: 51px;
+}
+.potrayed_by {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.seasons_name_list {
+  flex-direction: row;
+  display: flex;
+  margin-top: 14px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+.seasons {
+  background-color: #1a1a1a;
+  color: white;
+  margin-right: 6px;
+  padding: 5px 15px 5px 16px;
+}
+.date_text {
+  color: white;
+  margin-left: 17px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28.13px;
+}
+.char_label_title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.13px;
+  color: white;
+}
+.characters_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 21px;
+}
+.characters_img {
+  margin: 15px 43px 0px 0px;
+  border-radius: 5px;
+}
+.occupation_container {
+  margin-top: 63px;
+}
+.appeared_in {
+  margin-top: 81px;
+}
+.mtop {
+  margin-top: 14px;
+}
+.back_icon {
+  margin: 51px;
+}

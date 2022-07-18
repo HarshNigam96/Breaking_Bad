@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Route, Routes, useLocation } from "react-router-dom";
+import NavBar from "./Components/NavBar/NavBar";
+import Details from "./Screens/Details";
+import Favourites from "./Screens/Favourites";
+import Home from "./Screens/Home";
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {location.pathname === "/" ? (
+        <NavBar />
+      ) : location.pathname === "/favourites" ? (
+        <NavBar defaultNav={false} />
+      ) : null}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/favourites" element={<Favourites />} />
+        <Route path="/details" element={<Details />} />
+      </Routes>
     </div>
   );
 }
