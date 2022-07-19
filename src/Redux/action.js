@@ -7,16 +7,16 @@ export const GetData = (val) => {
   };
 };
 
-export const AddFav = (id) => {
+export const AddFav = (item) => {
   return {
     type: ADD_FAV,
-    payload: id,
+    payload: item,
   };
 };
 
-export const RemoveFav = (id) => {
+export const RemoveFav = (removeFav) => {
   return {
     type: REMOVE_FAV,
-    payload: id,
+    payload: removeFav,
   };
 };

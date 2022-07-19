@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../App.module.css";
 import Card from "../../Components/CardComponent/Card";
-import { ADD_FAV, REMOVE_FAV } from "../../Redux/actionTypes";
+import { AddFav, RemoveFav } from "../../Redux/action";
 const Home = () => {
   const stateData = useSelector((val) => val);
   const dispatch = useDispatch();
@@ -12,18 +12,12 @@ const Home = () => {
       stateData.fav?.filter((element) => element.char_id === item.char_id)
         .length === 0
     ) {
-      dispatch({
-        type: ADD_FAV,
-        payload: item,
-      });
+      dispatch(AddFav(item));
     } else {
       let removeFav = stateData.fav?.filter(
         (element) => element.char_id !== item.char_id
       );
-      dispatch({
-        type: REMOVE_FAV,
-        payload: removeFav,
-      });
+      dispatch(RemoveFav(removeFav));
     }
   };
   return (
@@ -32,13 +26,10 @@ const Home = () => {
         return (
           <Card
             key={i}
+            props={val}
             to={"/details"}
-            name={val.name}
-            nickname={val.nickname}
-            portrayed={val.portrayed}
-            img={val.img}
             onPress={() => onClick(val)}
-            showFavorites={
+            favIcon={
               stateData.fav?.filter(
                 (element) => element.char_id === val.char_id
               ).length === 0

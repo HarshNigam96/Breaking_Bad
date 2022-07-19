@@ -3,7 +3,9 @@ import styles from "./styles.module.css";
 import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
 import HEART from "../../assets/svgs/HEART.svg";
 const Card = (props) => {
-  const { params, to, img, name, nickname, portrayed, onPress } = props;
+  const { name, img, nickname, portrayed } = props.props;
+  const { onPress, to, params } = props;
+
   return (
     <div className={styles.card_container}>
       <Link state={params} style={{ textDecoration: "none" }} to={to}>
@@ -31,7 +33,7 @@ const Card = (props) => {
         onClick={onPress}
         height={"39px"}
         width={"44px"}
-        src={props.showFavorites ? HEART_FILLED : HEART}
+        src={props.favIcon ? HEART_FILLED : HEART}
       />
     </div>
   );
