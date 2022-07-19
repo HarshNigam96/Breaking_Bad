@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
+import HEART from "../../assets/svgs/HEART.svg";
 const Card = (props) => {
-  const { params, to, img, name, nickname, portrayed, addFav, favIcon } = props;
+  const { params, to, img, name, nickname, portrayed, onPress } = props;
   return (
     <div className={styles.card_container}>
       <Link state={params} style={{ textDecoration: "none" }} to={to}>
@@ -26,10 +28,10 @@ const Card = (props) => {
       </Link>
       <img
         className={styles.fav_icon}
-        onClick={addFav}
+        onClick={onPress}
         height={"39px"}
         width={"44px"}
-        src={favIcon}
+        src={props.showFavorites ? HEART_FILLED : HEART}
       />
     </div>
   );

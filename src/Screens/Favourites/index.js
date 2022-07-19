@@ -1,13 +1,20 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../App.module.css";
-import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
 import Card from "../../Components/CardComponent/Card";
-import { RemoveFav } from "../../Redux/action";
+import { REMOVE_FAV } from "../../Redux/actionTypes";
 const Favourites = () => {
   const dispatch = useDispatch();
   const stateData = useSelector((val) => val.fav);
-
+  const onClick = (item) => {
+    let removeFav = stateData?.filter(
+      (element) => element.char_id !== item.char_id
+    );
+    dispatch({
+      type: REMOVE_FAV,
+      payload: removeFav,
+    });
+  };
   return (
     <div className={styles.grid_view}>
       {stateData.map((val, i) => {
@@ -16,12 +23,18 @@ const Favourites = () => {
             key={i}
             to={"/details"}
             name={val.name}
-            favIcon={HEART_FILLED}
             nickname={val.nickname}
             portrayed={val.portrayed}
             img={val.img}
-            addFav={() => dispatch(RemoveFav(val.char_id))}
-            params={{ data: val }}
+            onPress={() => onClick(val)}
+            showFavorites={
+              stateData.fav?.filter(
+                (element) => element.char_id === val.char_id
+              ).length === 0
+                ? null
+                : true
+            }
+            params={{ data: val, index: i }}
           />
         );
       })}

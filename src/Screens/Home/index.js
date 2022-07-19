@@ -2,29 +2,48 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../App.module.css";
 import Card from "../../Components/CardComponent/Card";
-import { AddFav, RemoveFav } from "../../Redux/action";
-import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
-import HEART from "../../assets/svgs/HEART.svg";
+import { ADD_FAV, REMOVE_FAV } from "../../Redux/actionTypes";
 const Home = () => {
-  const stateData = useSelector((val) => val.data);
+  const stateData = useSelector((val) => val);
   const dispatch = useDispatch();
 
+  const onClick = (item) => {
+    if (
+      stateData.fav?.filter((element) => element.char_id === item.char_id)
+        .length === 0
+    ) {
+      dispatch({
+        type: ADD_FAV,
+        payload: item,
+      });
+    } else {
+      let removeFav = stateData.fav?.filter(
+        (element) => element.char_id !== item.char_id
+      );
+      dispatch({
+        type: REMOVE_FAV,
+        payload: removeFav,
+      });
+    }
+  };
   return (
     <div className={styles.grid_view}>
-      {stateData.map((val, i) => {
+      {stateData.data.map((val, i) => {
         return (
           <Card
             key={i}
             to={"/details"}
             name={val.name}
-            favIcon={val.isFav ? HEART_FILLED : HEART}
             nickname={val.nickname}
             portrayed={val.portrayed}
             img={val.img}
-            addFav={() =>
-              val.isFav
-                ? dispatch(RemoveFav(val.char_id))
-                : dispatch(AddFav(val.char_id))
+            onPress={() => onClick(val)}
+            showFavorites={
+              stateData.fav?.filter(
+                (element) => element.char_id === val.char_id
+              ).length === 0
+                ? null
+                : true
             }
             params={{ data: val, index: i }}
           />
