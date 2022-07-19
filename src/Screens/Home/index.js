@@ -20,25 +20,27 @@ const Home = () => {
       dispatch(RemoveFav(removeFav));
     }
   };
+  const renderCharacters = (val, i) => {
+    return (
+      <Card
+        key={i}
+        props={val}
+        to={"/details"}
+        onPress={() => onClick(val)}
+        favIcon={
+          stateData.fav?.filter((element) => element.char_id === val.char_id)
+            .length === 0
+            ? null
+            : true
+        }
+        params={{ data: val, index: i }}
+      />
+    );
+  };
   return (
     <div className={styles.grid_view}>
       {stateData.data.map((val, i) => {
-        return (
-          <Card
-            key={i}
-            props={val}
-            to={"/details"}
-            onPress={() => onClick(val)}
-            favIcon={
-              stateData.fav?.filter(
-                (element) => element.char_id === val.char_id
-              ).length === 0
-                ? null
-                : true
-            }
-            params={{ data: val, index: i }}
-          />
-        );
+        return renderCharacters(val, i);
       })}
     </div>
   );
