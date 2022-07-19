@@ -8,7 +8,7 @@ const Card = (props) => {
 
   return (
     <div className={styles.card_container}>
-      <Link state={params} style={{ textDecoration: "none" }} to={to}>
+      <Link state={params} style={{ textDecoration: "none" }} to={"/details"}>
         <div className={styles.content_container}>
           <img
             className={styles.poster}

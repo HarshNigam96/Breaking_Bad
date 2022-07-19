@@ -25,7 +25,6 @@ const Home = () => {
       <Card
         key={i}
         props={val}
-        to={"/details"}
         onPress={() => onClick(val)}
         favIcon={
           stateData.fav?.filter((element) => element.char_id === val.char_id)
