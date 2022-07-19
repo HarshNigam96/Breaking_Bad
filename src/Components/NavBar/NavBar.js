@@ -14,6 +14,9 @@ const NavBar = (props) => {
   const dispatch = useDispatch();
   const { defaultNav = true, showNavBar = true } = props;
   useEffect(() => {
+    breakinBadApi();
+  });
+  const breakinBadApi = () => {
     fetch(`${Character}?name=${text}`)
       .then((response) => response.json())
       .then((responseJson) => {
@@ -22,7 +25,7 @@ const NavBar = (props) => {
       .catch((error) => {
         console.error(error);
       });
-  }, [text]);
+  };
   return (
     <nav>
       {showNavBar ? (

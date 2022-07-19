@@ -4,13 +4,14 @@ import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
 import HEART from "../../assets/svgs/HEART.svg";
 const Card = (props) => {
   const { name, img, nickname, portrayed } = props.props;
-  const { onPress, to, params } = props;
+  const { onPress, params } = props;
 
   return (
     <div className={styles.card_container}>
       <Link state={params} style={{ textDecoration: "none" }} to={"/details"}>
         <div className={styles.content_container}>
           <img
+            alt="char_poster"
             className={styles.poster}
             width={"158px"}
             height={"210px"}
@@ -30,6 +31,7 @@ const Card = (props) => {
       </Link>
       <img
         className={styles.fav_icon}
+        alt="favIcon"
         onClick={onPress}
         height={"39px"}
         width={"44px"}
