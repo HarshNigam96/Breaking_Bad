@@ -1,4 +1,4 @@
-import { ADD_FAV, GET_DATA, REMOVE_FAV } from "./actionTypes";
+import { FAV_ITEM, GET_DATA } from "./actionTypes";
 
 const init = {
   data: [],
@@ -13,16 +13,17 @@ export const rootReducer = (state = init, action) => {
         data: action.payload,
       };
 
-    case ADD_FAV:
+    case FAV_ITEM:
+      let favItems = [...state.fav];
+      const pos = favItems.findIndex((i) => i === action.payload.char_id);
+      if (pos === -1) {
+        favItems.push(action.payload.char_id);
+      } else {
+        favItems.splice(pos, 1);
+      }
       return {
         ...state,
-        fav: [...state.fav, action.payload],
-      };
-
-    case REMOVE_FAV:
-      return {
-        ...state,
-        fav: action.payload,
+        fav: favItems,
       };
 
     default:

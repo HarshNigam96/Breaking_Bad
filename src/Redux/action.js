@@ -1,4 +1,4 @@
-import { ADD_FAV, GET_DATA, REMOVE_FAV } from "./actionTypes";
+import { FAV_ITEM, GET_DATA } from "./actionTypes";
 
 export const GetData = (val) => {
   return {
@@ -6,17 +6,9 @@ export const GetData = (val) => {
     payload: val,
   };
 };
-
-export const AddFav = (item) => {
+export const ToggleFav = (item) => {
   return {
-    type: ADD_FAV,
+    type: FAV_ITEM,
     payload: item,
-  };
-};
-
-export const RemoveFav = (removeFav) => {
-  return {
-    type: REMOVE_FAV,
-    payload: removeFav,
   };
 };
