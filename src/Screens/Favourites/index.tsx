@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../../App.module.css";
 import Card from "../../Components/CardComponent/Card";
-import { ToggleFav } from "../../Redux/action";
 import { CharacterModal } from "../../interfaces/interface";
+import { ToggleFav } from "../../Redux/action";
 
 const Favourites = () => {
   const dispatch = useDispatch();
