@@ -7,7 +7,7 @@ import { CharacterModal } from "../../interfaces/interface";
 
 const Favourites = () => {
   const dispatch = useDispatch();
-  const stateData = useSelector((val: any) => val);
+  const stateData = useSelector((val: any) => val.GetCharacters);
 
   const onClickLike = (item: CharacterModal) => {
     dispatch(ToggleFav(item));

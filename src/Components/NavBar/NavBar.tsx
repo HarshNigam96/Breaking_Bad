@@ -17,7 +17,6 @@ const NavBar = (props: any) => {
     breakinBadApi();
   });
   const breakinBadApi = () => {
-    console.log("calll");
     fetch(`${Character}?name=${text}`)
       .then((response) => response.json())
       .then((responseJson) => {

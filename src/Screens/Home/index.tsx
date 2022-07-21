@@ -5,7 +5,7 @@ import Card from "../../Components/CardComponent/Card";
 import { ToggleFav } from "../../Redux/action";
 import { CharacterModal } from "../../interfaces/interface";
 const Home = () => {
-  const stateData = useSelector((val: any) => val);
+  const stateData = useSelector((val: any) => val.GetCharacters);
 
   const dispatch = useDispatch();
   const onClickLike = (data: CharacterModal) => {

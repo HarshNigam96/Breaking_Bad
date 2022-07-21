@@ -8,7 +8,7 @@ const Card = (props: any) => {
   const { params } = props;
   let listItem = props.itemData;
 
-  const stateData = useSelector((val: any) => val);
+  const stateData = useSelector((val: any) => val.GetCharacters);
 
   const isFavItem =
     stateData.fav.findIndex((i: number) => i === listItem.char_id) !== -1;
