@@ -3,15 +3,15 @@ import styles from "./styles.module.css";
 import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
 import HEART from "../../assets/svgs/HEART.svg";
 import { useSelector } from "react-redux";
-const Card = (props) => {
+const Card = (props: any) => {
   const { name, img, nickname, portrayed } = props.itemData;
   const { params } = props;
   let listItem = props.itemData;
 
-  const stateData = useSelector((val) => val);
+  const stateData = useSelector((val: any) => val);
 
   const isFavItem =
-    stateData.fav.findIndex((i) => i === listItem.char_id) !== -1;
+    stateData.fav.findIndex((i: number) => i === listItem.char_id) !== -1;
 
   return (
     <div className={styles.card_container}>

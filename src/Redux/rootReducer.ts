@@ -5,7 +5,10 @@ const init = {
   fav: [],
 };
 
-export const rootReducer = (state = init, action) => {
+export const rootReducer = (
+  state = init,
+  action: { type: string; payload: any }
+) => {
   switch (action.type) {
     case GET_DATA:
       return {
@@ -14,8 +17,10 @@ export const rootReducer = (state = init, action) => {
       };
 
     case FAV_ITEM:
-      let favItems = [...state.fav];
-      const pos = favItems.findIndex((i) => i === action.payload.char_id);
+      const favItems: any[] = [...state.fav];
+      const pos = favItems.findIndex(
+        (i: number) => i === action.payload.char_id
+      );
       if (pos === -1) {
         favItems.push(action.payload.char_id);
       } else {

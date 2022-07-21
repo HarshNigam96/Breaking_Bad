@@ -7,7 +7,7 @@ import HEART_FILLED from "../../assets/svgs/HEART_FILLED.svg";
 import SEARCH_ICON from "../../assets/svgs/searchIcon.svg";
 import { GetData } from "../../Redux/action";
 import styles from "./styles.module.css";
-const NavBar = (props) => {
+const NavBar = (props: any) => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [text, setText] = useState("");
@@ -17,6 +17,7 @@ const NavBar = (props) => {
     breakinBadApi();
   });
   const breakinBadApi = () => {
+    console.log("calll");
     fetch(`${Character}?name=${text}`)
       .then((response) => response.json())
       .then((responseJson) => {

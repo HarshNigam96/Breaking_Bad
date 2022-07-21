@@ -4,8 +4,8 @@ import BACK_ARROW from "../../assets/svgs/backArrow.svg";
 import BIRTHDAY_ICON from "../../assets/svgs/birthdayIcon.svg";
 import styles from "./styles.module.css";
 const Details = () => {
-  const info = useLocation();
-  const stateData = useSelector((val) => val.data);
+  const info: any = useLocation();
+  const stateData = useSelector((val: any) => val.data);
   const { name, nickname, birthday, img, portrayed, occupation, appearance } =
     info.state.data;
   const indexValue = info.state.index;
@@ -14,7 +14,8 @@ const Details = () => {
     <div className={styles.main_container}>
       <div
         style={{
-          "--img": `url(${img})`,
+          backgroundImage: ` linear-gradient(to bottom, rgba(3, 3, 3, 0.5), rgba(7, 0, 0, 1)),
+          url(${img})`,
         }}
         className={styles.background_image_container}
       >
@@ -41,7 +42,6 @@ const Details = () => {
           </div>
         </div>
       </div>
-
       <div className={styles.details}>
         <h4>Potrayed</h4>
         <div className={styles.potrayed_by}>
@@ -66,7 +66,7 @@ const Details = () => {
 
         <h4 className={styles.appeared_in}>Appeared in</h4>
         <div className={styles.seasons_name_list}>
-          {appearance.map((val, i) => (
+          {appearance.map((val: any, i: number) => (
             <h6 key={i} className={styles.seasons}>
               Season {val}
             </h6>
@@ -74,19 +74,21 @@ const Details = () => {
         </div>
         <label className={styles.char_label_title}>Other characters</label>
         <div className={styles.characters_list}>
-          {stateData?.slice(indexValue + 1, indexValue + 4).map((val, i) => (
-            <div key={i}>
-              <img
-                className={styles.characters_img}
-                height={"210px"}
-                width={"158px"}
-                src={val.img}
-                alt="poster"
-              />
-              <h1 className={styles.name}>{val.name}</h1>
-              <h1>{val.nickname}</h1>
-            </div>
-          ))}
+          {stateData
+            ?.slice(indexValue + 1, indexValue + 4)
+            .map((val: any, i: number) => (
+              <div key={i}>
+                <img
+                  className={styles.characters_img}
+                  height={"210px"}
+                  width={"158px"}
+                  src={val.img}
+                  alt="poster"
+                />
+                <h1 className={styles.name}>{val.name}</h1>
+                <h1>{val.nickname}</h1>
+              </div>
+            ))}
         </div>
       </div>
     </div>
